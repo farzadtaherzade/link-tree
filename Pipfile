@@ -7,6 +7,9 @@ name = "pypi"
 djangorestframework = "*"
 psycopg2-binary = "*"
 pillow = "*"
+drf-social-oauth2 = "==3.1.0"
+python-dotenv = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
