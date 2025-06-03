@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Profile(models.Model):
-    avatar = models.ImageField(upload_to="uploads/", null=True, blank=False)
+    avatar = models.ImageField(upload_to="uploads/", null=True, blank=True)
     bio = models.TextField(null=True, blank=True)
     display_name = models.CharField()
 

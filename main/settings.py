@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'social_django',
     'drf_social_oauth2',
     'corsheaders',
+
     # apps
     "links.apps.LinksConfig",
     "accounts.apps.AccountsConfig",
@@ -84,9 +85,13 @@ TEMPLATES = [
 ]
 
 REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
         'drf_social_oauth2.authentication.SocialAuthentication',
+        # "rest_framework_simplejwt.authentication.JWTAuthentication"
     ),
 }
 
@@ -164,10 +169,9 @@ AUTHENTICATION_BACKENDS = (
 )
 DRFSO2_PROPRIETARY_BACKEND_NAME = ("github",)
 ACTIVATE_JWT = True
-
 SOCIAL_AUTH_GITHUB_KEY = os.environ.get('GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('GITHUB_SECRET')
 
 CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
 ]
