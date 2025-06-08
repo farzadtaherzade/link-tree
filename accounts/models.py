@@ -16,3 +16,16 @@ class Profile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}"
+
+
+class Socials(models.Model):
+    github = models.URLField(max_length=200, null=True, blank=True)
+    twitter = models.URLField(max_length=200, null=True, blank=True)
+    linkedin = models.URLField(max_length=200, null=True, blank=True)
+    instagram = models.URLField(max_length=200, null=True, blank=True)
+
+    profile = models.OneToOneField(
+        Profile, on_delete=models.CASCADE, related_name='socials')
+
+    def __str__(self):
+        return f"{self.profile.user.username}'s social links"

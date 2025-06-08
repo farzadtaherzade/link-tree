@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from oauth2_provider import settings as oauth2_settings
+from datetime import timedelta
 
 load_dotenv()
 
@@ -175,3 +177,6 @@ SOCIAL_AUTH_GITHUB_SECRET = os.environ.get('GITHUB_SECRET')
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:3000",
 ]
+
+oauth2_settings.DEFAULTS['ACCESS_TOKEN_EXPIRE_SECONDS'] = timedelta(
+    days=7).total_seconds()
