@@ -28,6 +28,11 @@ class RetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DisplayLinkSerializers
     permission_classes = [IsOwner, IsAuthenticated]
 
+    def get_serializer_class(self):
+        if self.request.method in ['PUT', 'PATCH']:
+            return LinkSerializers
+        return DisplayLinkSerializers
+
 
 class DisplayLink(generics.GenericAPIView):
     serializer_class = DisplayLinkSerializers

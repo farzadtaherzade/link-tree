@@ -13,7 +13,6 @@ class LinkSerializers(serializers.ModelSerializer):
 
 
 class DisplayLinkSerializers(serializers.Serializer):
-
     links = LinkSerializers(many=True, read_only=True)
     avatar = serializers.ImageField()
     bio = serializers.CharField()
